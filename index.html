@@ -527,12 +527,14 @@
   <script>
     function gtag_report_conversion(url) {
       var callback = function () {
-        if (typeof(url) !== 'undefined') {
+        if (typeof(url) != 'undefined') {
           window.location = url;
         }
       };
       gtag('event', 'conversion', {
-        'send_to': 'AW-17964760449/4EIECObIp5UcEIH7ofZC',
+        'send_to': 'AW-17964760449/4EIECOb1p5UcEIH7ofZC',
+        'value': 1.0,
+        'currency': 'USD',
         'event_callback': callback
       });
       return false;
