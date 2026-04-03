@@ -3,36 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RaiderTrader | ARC Raiders Blueprint Trades on Discord</title>
+  <meta
+    name="description"
+    content="Find missing blueprints, trade crafting materials, and connect with fellow Raiders on a Discord trading hub built for ARC Raiders."
+  />
   <style>
     :root {
-      --bg: #0b0f14;
-      --bg-soft: #121922;
-      --card: #171f2b;
-      --text: #e8eef7;
+      --bg: #080c14;
+      --bg-soft: #111724;
+      --card: rgba(18, 24, 36, 0.92);
+      --card-2: rgba(14, 18, 28, 0.92);
+      --text: #edf3ff;
       --muted: #98a7bd;
-      --line: #273244;
-      --accent: #5ab3ff;
-      --accent-2: #86ffd0;
-      --danger: #ff7b7b;
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 1120px;
+      --line: rgba(255, 255, 255, 0.09);
+      --accent: #58b4ff;
+      --accent-2: #9cff56;
+      --accent-3: #ffb81c;
+      --accent-4: #7c8fff;
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
+      --radius: 20px;
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(90,179,255,.12), transparent 28%),
-        radial-gradient(circle at top left, rgba(134,255,208,.08), transparent 22%),
-        var(--bg);
       color: var(--text);
       line-height: 1.55;
+      background:
+        radial-gradient(circle at top left, rgba(124, 143, 255, 0.14), transparent 24%),
+        radial-gradient(circle at top right, rgba(88, 180, 255, 0.12), transparent 26%),
+        linear-gradient(180deg, #090d15 0%, #0b1020 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(110deg, rgba(8, 12, 20, 0.82), rgba(8, 12, 20, 0.94)),
+        url("assets/raider-trader-1.png") right top / min(42vw, 560px) auto no-repeat;
+      pointer-events: none;
+      z-index: -2;
     }
 
     a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
     .wrap { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
 
     .nav {
@@ -40,42 +61,40 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(12px);
-      background: rgba(11,15,20,.75);
-      border-bottom: 1px solid rgba(255,255,255,.05);
+      background: rgba(8, 12, 20, 0.76);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 18px;
       padding: 14px 0;
-      gap: 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-weight: 800;
-      letter-spacing: .2px;
+      letter-spacing: 0.2px;
     }
 
     .brand-badge {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #081018;
-      font-weight: 900;
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
+      overflow: hidden;
       box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #0f1622;
     }
 
     .nav-links {
       display: flex;
-      gap: 18px;
       align-items: center;
+      gap: 18px;
       color: var(--muted);
       font-size: 14px;
     }
@@ -91,27 +110,52 @@
       background: #111823;
       color: var(--text);
       font-weight: 700;
-      transition: .18s ease;
       cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
 
-    .btn:hover { transform: translateY(-1px); border-color: #3a4a63; }
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
     .btn.primary {
-      background: linear-gradient(135deg, var(--accent), #3f8cff);
-      color: #081018;
       border: none;
-      box-shadow: 0 10px 30px rgba(63,140,255,.28);
+      color: #081018;
+      background: linear-gradient(135deg, var(--accent), #6fd2ff 54%, var(--accent-2));
+      box-shadow: 0 12px 32px rgba(88, 180, 255, 0.28);
     }
 
     .hero {
-      padding: 72px 0 42px;
+      position: relative;
+      padding: 72px 0 38px;
+      overflow: clip;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 30px -120px auto auto;
+      width: min(34vw, 460px);
+      height: min(74vh, 700px);
+      border-radius: 42px;
+      background:
+        linear-gradient(180deg, rgba(8, 12, 20, 0.2), rgba(8, 12, 20, 0.72)),
+        url("assets/raider-trader-1.png") center / cover no-repeat;
+      opacity: 0.52;
+      transform: rotate(7deg);
+      box-shadow: var(--shadow);
+      z-index: 0;
+      pointer-events: none;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.08fr .92fr;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
       gap: 28px;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     .eyebrow {
@@ -119,10 +163,10 @@
       align-items: center;
       gap: 8px;
       padding: 8px 12px;
-      border: 1px solid rgba(255,255,255,.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 999px;
-      color: var(--accent-2);
-      background: rgba(255,255,255,.02);
+      background: rgba(255, 255, 255, 0.03);
+      color: #b9fb8a;
       font-size: 13px;
       font-weight: 700;
       margin-bottom: 16px;
@@ -130,16 +174,17 @@
 
     h1 {
       margin: 0 0 14px;
-      font-size: clamp(2.4rem, 5vw, 4.6rem);
-      line-height: .96;
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      line-height: 0.96;
       letter-spacing: -1.8px;
+      max-width: 780px;
     }
 
     .lead {
-      font-size: 1.08rem;
+      margin: 0 0 24px;
+      font-size: 1.06rem;
       color: var(--muted);
-      max-width: 680px;
-      margin-bottom: 24px;
+      max-width: 720px;
     }
 
     .cta-row {
@@ -154,26 +199,76 @@
       color: var(--muted);
     }
 
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #d5e4f8;
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
     .panel {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 26px;
       padding: 22px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+      border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: var(--shadow);
     }
 
     .terminal {
-      border: 1px solid #1e2a3b;
-      border-radius: 20px;
+      min-height: 430px;
       padding: 18px;
-      min-height: 390px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background:
+        linear-gradient(180deg, rgba(7, 12, 19, 0.86), rgba(7, 12, 19, 0.96)),
+        url("assets/raider-trader-1.png") center / cover no-repeat;
+      position: relative;
+      overflow: hidden;
     }
 
-    .dots { display: flex; gap: 7px; margin-bottom: 14px; }
-    .dot { width: 10px; height: 10px; border-radius: 999px; background: #2d3a4e; }
-    .dot:nth-child(1){ background: #ff7b7b; }
-    .dot:nth-child(2){ background: #ffd166; }
-    .dot:nth-child(3){ background: #86ffd0; }
+    .terminal::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(88, 180, 255, 0.07), rgba(156, 255, 86, 0.03));
+      pointer-events: none;
+    }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #2d3a4e;
+    }
+
+    .dot:nth-child(1) { background: #ff7b7b; }
+    .dot:nth-child(2) { background: #ffd166; }
+    .dot:nth-child(3) { background: #86ffd0; }
+
+    .preview-stack {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 14px;
+    }
 
     .log {
       display: grid;
@@ -185,26 +280,51 @@
     .log-line {
       padding: 12px 14px;
       border-radius: 14px;
-      background: #101a27;
+      background: rgba(12, 19, 30, 0.78);
       color: #d7e5f6;
-      border: 1px solid #1e2a3b;
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .green { color: var(--accent-2); }
     .blue { color: #84c8ff; }
-    .red { color: var(--danger); }
+    .green { color: #a7ff86; }
+    .gold { color: #ffcf69; }
 
-    section { padding: 28px 0; }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(12, 19, 30, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .metric strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1.2rem;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section { padding: 30px 0; }
+
     .section-title {
-      font-size: clamp(1.65rem, 3vw, 2.3rem);
       margin: 0 0 10px;
-      letter-spacing: -.8px;
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
+      letter-spacing: -0.8px;
     }
 
     .section-copy {
-      color: var(--muted);
-      max-width: 760px;
       margin: 0 0 22px;
+      max-width: 780px;
+      color: var(--muted);
     }
 
     .grid-3 {
@@ -217,12 +337,60 @@
       padding: 20px;
       border-radius: var(--radius);
       background: var(--card);
-      border: 1px solid rgba(255,255,255,.06);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
     }
 
-    .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
-    .card p { margin: 0; color: var(--muted); }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .shot-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .shot-media {
+      aspect-ratio: 16 / 10;
+      background:
+        linear-gradient(180deg, rgba(90, 179, 255, 0.08), rgba(7, 13, 20, 0.9)),
+        #0a1119;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
+
+    .shot-media img {
+      max-height: 100%;
+      width: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .shot-copy {
+      padding: 18px 20px 20px;
+    }
+
+    .shot-copy p {
+      margin: 0;
+      color: var(--muted);
+    }
 
     .steps {
       display: grid;
@@ -231,15 +399,72 @@
     }
 
     .step-num {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
+      width: 36px;
+      height: 36px;
       display: grid;
       place-items: center;
-      font-weight: 900;
+      border-radius: 999px;
       margin-bottom: 12px;
-      background: rgba(90,179,255,.18);
-      color: #a9d8ff;
+      font-weight: 900;
+      color: #09111a;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .ops-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+    }
+
+    .ops-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .embed-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--card-2);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: var(--shadow);
+    }
+
+    .embed-card img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 12px;
+    }
+
+    .eyebrow-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9bc8ff;
+    }
+
+    .cta-box {
+      padding: 26px;
+      border-radius: 26px;
+      background:
+        linear-gradient(135deg, rgba(88, 180, 255, 0.14), rgba(156, 255, 86, 0.07)),
+        rgba(13, 17, 26, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
     }
 
     .faq {
@@ -248,10 +473,10 @@
     }
 
     details {
-      border: 1px solid rgba(255,255,255,.07);
-      border-radius: 16px;
       padding: 16px 18px;
-      background: rgba(255,255,255,.02);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     summary {
@@ -260,20 +485,8 @@
     }
 
     details p {
-      color: var(--muted);
       margin: 12px 0 0;
-    }
-
-    .cta-box {
-      padding: 24px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(90,179,255,.12), rgba(134,255,208,.08));
-      border: 1px solid rgba(255,255,255,.08);
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      color: var(--muted);
     }
 
     footer {
@@ -282,48 +495,35 @@
       font-size: 14px;
     }
 
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .pill {
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.07);
-      color: var(--muted);
-      background: rgba(255,255,255,.02);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    @media (max-width: 920px) {
+    @media (max-width: 980px) {
       .hero-grid,
       .grid-3,
-      .steps { grid-template-columns: 1fr; }
+      .showcase-grid,
+      .steps,
+      .metric-row,
+      .ops-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
       .nav-links a:not(.btn) { display: none; }
       .hero { padding-top: 42px; }
+      .hero::after {
+        width: 54vw;
+        height: 48vh;
+        opacity: 0.32;
+      }
     }
   </style>
 
-  <!--
-    STEP 1: Replace G-XXXXXXXXXX below with your Google tag ID.
-    If you already have a Google tag in another template/header, do not paste a duplicate.
-  -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17964760449"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+    gtag('config', 'AW-17964760449');
   </script>
 
-  <!--
-    STEP 2: Replace the send_to value below with your Google Ads conversion ID/label.
-    Example format: AW-123456789/AbCdEfGhIjKlMnOpQr
-  -->
   <script>
     function gtag_report_conversion(url) {
       var callback = function () {
@@ -343,13 +543,17 @@
   <nav class="nav">
     <div class="wrap nav-inner">
       <div class="brand">
+        <div class="brand-badge">
+          <img src="assets/raider-trader-small.png" alt="RaiderTrader logo" />
+        </div>
         <div>RaiderTrader</div>
       </div>
       <div class="nav-links">
         <a href="#features">Features</a>
-        <a href="#how">How it works</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#tools">Bot Tools</a>
         <a href="#faq">FAQ</a>
-        <a class="btn primary" href="https://discord.gg/REPLACE_INVITE" onclick="return gtag_report_conversion('https://discord.gg/REPLACE_INVITE');">Join Discord</a>
+        <a class="btn primary" href="https://www.discord.gg/v5jFrXT43r" onclick="return gtag_report_conversion('https://www.discord.gg/v5jFrXT43r');">Join The RaiderTrader Discord</a>
       </div>
     </div>
   </nav>
@@ -357,19 +561,48 @@
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
+        <div class="eyebrow">Your ARC Raiders trading hub on Discord</div>
+        <h1>Find your missing blueprints. Trade your spares.</h1>
         <p class="lead">
+          Do you have so many duplicate blueprints you do not know what to do with? Have you been missing a blueprint and cannot find it anywhere? RaiderTrader is built fully inside a Discord server and uses a custom application to manage trade requests, rep, middleman requests, and more. Run a single command to post what you need and what you have, track blueprints the bot marks as missing, and get your listings in front of other Raiders fast.
         </p>
         <div class="cta-row">
-          <a class="btn" href="#features">See how it works</a>
+          <a class="btn primary" href="https://www.discord.gg/v5jFrXT43r" onclick="return gtag_report_conversion('https://www.discord.gg/v5jFrXT43r');">Join The RaiderTrader Discord</a>
+          <a class="btn" href="#screenshots">See the screenshots</a>
         </div>
+        <div class="subtext">Find rare blueprints, trade crafting materials, finish quest requirements, and connect with fellow Raiders in one place.</div>
         <div class="pill-row">
+          <div class="pill">Blueprint trades</div>
+          <div class="pill">Crafting materials</div>
+          <div class="pill">Quest requirements</div>
+          <div class="pill">Rep and middlemen</div>
         </div>
       </div>
 
       <div class="panel">
         <div class="terminal">
           <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="preview-stack">
             <div class="log">
+              <div class="log-line"><span class="blue">/trade post</span> -> list your items for trading with one command</div>
+              <div class="log-line"><span class="green">Blueprint tracking</span> -> find the missing blueprints you still need</div>
+              <div class="log-line"><span class="gold">Middleman requests</span> -> pull in trusted help when a deal needs it</div>
+              <div class="log-line">Trade requests, rep, and ticket state stay visible in one place</div>
+            </div>
+            <div class="metric-row">
+              <div class="metric">
+                <strong>1 command</strong>
+                <span>Post what you need and what you have for everyone to see</span>
+              </div>
+              <div class="metric">
+                <strong>Live rep</strong>
+                <span>Use rep checks and reviews instead of guessing who to trust</span>
+              </div>
+              <div class="metric">
+                <strong>Drop order</strong>
+                <span>Let the bot decide who should drop first based on rep</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -379,14 +612,107 @@
   <main>
     <section id="features">
       <div class="wrap">
+        <h2 class="section-title">A trading platform built for ARC Raiders players</h2>
         <p class="section-copy">
+          Discover a new way to get the items you need for ARC Raiders. RaiderTrader is a Discord trading platform where players can find missing blueprints, trade crafting materials, connect with other gamers, and move deals through a cleaner workflow than random DMs.
         </p>
         <div class="grid-3">
           <div class="card">
+            <h3>Find the blueprints you need</h3>
+            <p>Track missing blueprints, browse requests, and connect with fellow Raiders who have the parts you still need.</p>
           </div>
           <div class="card">
+            <h3>Trade crafting materials</h3>
+            <p>Buy, sell, and trade blueprint spares, crafting materials, and other useful ARC Raiders items with less chaos.</p>
           </div>
           <div class="card">
+            <h3>Rep, tickets, and middlemen</h3>
+            <p>Use guided tickets, reputation tracking, and middleman requests to make deals feel more accountable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenshots">
+      <div class="wrap">
+        <h2 class="section-title">Real screenshots of the app in action</h2>
+        <p class="section-copy">
+          This is the proof layer. Instead of talking abstractly about safety and convenience, the page now shows the actual request flow, ticket view, rep review, and automated drop-order logic inside the bot.
+        </p>
+        <div class="showcase-grid">
+          <article class="card shot-card">
+            <div class="shot-media">
+              <img src="assets/request-card.png" alt="RaiderTrader request screenshot" />
+            </div>
+            <div class="shot-copy">
+              <h3>Requests go public fast</h3>
+              <p>Players can post what they want, show their trade rep, and let others send offers directly from the request card.</p>
+            </div>
+          </article>
+          <article class="card shot-card">
+            <div class="shot-media">
+              <img src="assets/trade-ticket.png" alt="RaiderTrader trade ticket screenshot" />
+            </div>
+            <div class="shot-copy">
+              <h3>Tickets keep the deal organized</h3>
+              <p>Once two players match, the bot moves them into a structured trade ticket with clear roles, offer details, and actions.</p>
+            </div>
+          </article>
+          <article class="card shot-card">
+            <div class="shot-media">
+              <img src="assets/drop-order.png" alt="RaiderTrader drop order screenshot" />
+            </div>
+            <div class="shot-copy">
+              <h3>Drop order is based on rep</h3>
+              <p>The bot can decide who should drop first using trade rep, which gives players a clear rule instead of arguing in DMs.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="wrap">
+        <h2 class="section-title">The bot handles the trust and workflow details</h2>
+        <p class="section-copy">
+          RaiderTrader is not just a listing board. It helps players inspect rep, see completed reviews, and decide how a trade should proceed before anything gets risky.
+        </p>
+        <div class="ops-grid">
+          <div class="ops-stack">
+            <div class="embed-card">
+              <span class="eyebrow-label">Trade Rep</span>
+              <img src="assets/rep-check.png" alt="RaiderTrader rep check screenshot" />
+              <h3>Quick rep checks</h3>
+              <p>Use `repcheck` to see total reps and trade rep milestones before you decide whether a deal looks safe.</p>
+            </div>
+            <div class="embed-card">
+              <span class="eyebrow-label">Review History</span>
+              <img src="assets/rep-review.png" alt="RaiderTrader rep review screenshot" />
+              <h3>Completed trades become visible trust signals</h3>
+              <p>Rep reviews tie back to real tickets and real users, which is a stronger signal than vague screenshots or memory.</p>
+            </div>
+          </div>
+          <div class="mini-grid">
+            <div class="embed-card">
+              <span class="eyebrow-label">Request Flow</span>
+              <h3>List what you need</h3>
+              <p>Put missing blueprints and spare materials in front of the whole server instead of hoping the right person sees a message.</p>
+            </div>
+            <div class="embed-card">
+              <span class="eyebrow-label">Ticket Flow</span>
+              <h3>Finalize or call a middleman</h3>
+              <p>Once a match is made, the bot gives both traders a more accountable path to finish the deal cleanly.</p>
+            </div>
+            <div class="embed-card">
+              <span class="eyebrow-label">Rep Logic</span>
+              <h3>Use `/drop` when trust is uneven</h3>
+              <p>Lower rep drops first. That removes ambiguity and gives both sides a visible basis for the decision.</p>
+            </div>
+            <div class="embed-card">
+              <span class="eyebrow-label">Community</span>
+              <h3>Built for active Raiders</h3>
+              <p>Connect with other players working on blueprint collections, quest requirements, and material hunts.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -395,15 +721,22 @@
     <section id="how">
       <div class="wrap">
         <h2 class="section-title">How it works</h2>
+        <p class="section-copy">Join the community, post what you need, and use the server tools to find rare blueprints and other ARC Raiders items faster.</p>
         <div class="steps">
           <div class="card">
             <div class="step-num">1</div>
+            <h3>Join the community</h3>
+            <p>Get access to the Discord for ARC Raiders trading, bot commands, and the live trade board.</p>
           </div>
           <div class="card">
             <div class="step-num">2</div>
+            <h3>Post what you need</h3>
+            <p>Run a command to list your spare blueprints, crafting materials, and the items you are still missing.</p>
           </div>
           <div class="card">
             <div class="step-num">3</div>
+            <h3>Trade with more structure</h3>
+            <p>Move into tickets, use rep and middleman requests when needed, and close deals with better visibility.</p>
           </div>
         </div>
       </div>
@@ -413,8 +746,12 @@
       <div class="wrap">
         <div class="cta-box">
           <div>
+            <h2 class="section-title" style="margin-bottom: 6px;">Get the blueprints you need</h2>
+            <div class="section-copy" style="margin: 0; max-width: 620px;">
+              Join our trading platform today to find missing blueprints, trade crafting materials, and connect with other players working on their collections and quests.
+            </div>
           </div>
-          <a class="btn primary" href="https://discord.gg/REPLACE_INVITE" onclick="return gtag_report_conversion('https://discord.gg/REPLACE_INVITE');">Join Discord</a>
+          <a class="btn primary" href="https://www.discord.gg/v5jFrXT43r" onclick="return gtag_report_conversion('https://www.discord.gg/v5jFrXT43r');">Join Discord</a>
         </div>
       </div>
     </section>
@@ -424,12 +761,16 @@
         <h2 class="section-title">FAQ</h2>
         <div class="faq">
           <details>
-            <summary>Is this an official Arc Raiders service?</summary>
-            <p>No. It’s a community-run trading service built for players who want more structure and less nonsense when making deals.</p>
+            <summary>Is this an official ARC Raiders service?</summary>
+            <p>No. It is a community-run trading service built for players who want more structure and less nonsense when making deals.</p>
           </details>
           <details>
+            <summary>What can I trade here?</summary>
+            <p>Blueprints, crafting materials, quest-related items, and other ARC Raiders trading needs that fit your server rules.</p>
           </details>
           <details>
+            <summary>Why use RaiderTrader instead of a normal Discord channel?</summary>
+            <p>Because listings, rep, middleman requests, drop-order logic, and trade tickets stay organized, visible, and easier to trust than random messages and DMs.</p>
           </details>
         </div>
       </div>
@@ -438,6 +779,7 @@
 
   <footer>
     <div class="wrap">
+      RaiderTrader is a community project for ARC Raiders players. Replace the Google tag values before publishing.
     </div>
   </footer>
 </body>
