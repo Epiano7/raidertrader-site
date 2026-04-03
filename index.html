@@ -365,22 +365,24 @@
     }
 
     .shot-media {
-      aspect-ratio: 16 / 10;
       background:
         linear-gradient(180deg, rgba(90, 179, 255, 0.08), rgba(7, 13, 20, 0.9)),
         #0a1119;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       display: grid;
       place-items: center;
-      padding: 16px;
+      padding: 18px;
+      min-height: 420px;
     }
 
     .shot-media img {
-      max-height: 100%;
       width: auto;
+      max-width: 100%;
+      max-height: 540px;
       border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 18px 30px rgba(0, 0, 0, 0.25);
+      image-rendering: auto;
     }
 
     .shot-copy {
@@ -437,9 +439,12 @@
 
     .embed-card img {
       width: 100%;
+      max-height: 360px;
+      object-fit: contain;
       border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       margin-bottom: 12px;
+      background: rgba(8, 12, 20, 0.55);
     }
 
     .eyebrow-label {
@@ -570,7 +575,7 @@
         </p>
         <div class="cta-row">
           <a class="btn primary" href="https://www.discord.gg/v5jFrXT43r" onclick="return gtag_report_conversion('https://www.discord.gg/v5jFrXT43r');">Join The RaiderTrader Discord</a>
-          <a class="btn" href="#screenshots">See the screenshots</a>
+          <a class="btn" href="#screenshots">View real examples</a>
         </div>
         <div class="subtext">Find rare blueprints, trade crafting materials, finish quest requirements, and connect with fellow Raiders in one place.</div>
         <div class="pill-row">
@@ -637,9 +642,9 @@
 
     <section id="screenshots">
       <div class="wrap">
-        <h2 class="section-title">Real screenshots of the app in action</h2>
+        <h2 class="section-title">See how RaiderTrader works before you join</h2>
         <p class="section-copy">
-          This is the proof layer. Instead of talking abstractly about safety and convenience, the page now shows the actual request flow, ticket view, rep review, and automated drop-order logic inside the bot.
+          Browse real examples from the bot so you can see how requests, trade tickets, rep checks, and drop-order decisions actually look inside the server.
         </p>
         <div class="showcase-grid">
           <article class="card shot-card">
@@ -647,8 +652,8 @@
               <img src="assets/request-card.png" alt="RaiderTrader request screenshot" />
             </div>
             <div class="shot-copy">
-              <h3>Requests go public fast</h3>
-              <p>Players can post what they want, show their trade rep, and let others send offers directly from the request card.</p>
+              <h3>Post a request in seconds</h3>
+              <p>Ask for a missing blueprint, show your rep, and let other Raiders send offers directly from the listing.</p>
             </div>
           </article>
           <article class="card shot-card">
@@ -656,8 +661,8 @@
               <img src="assets/trade-ticket.png" alt="RaiderTrader trade ticket screenshot" />
             </div>
             <div class="shot-copy">
-              <h3>Tickets keep the deal organized</h3>
-              <p>Once two players match, the bot moves them into a structured trade ticket with clear roles, offer details, and actions.</p>
+              <h3>Move the deal into a ticket</h3>
+              <p>When two players match, the bot opens a structured trade ticket with the offer details and next actions in one place.</p>
             </div>
           </article>
           <article class="card shot-card">
@@ -665,8 +670,8 @@
               <img src="assets/drop-order.png" alt="RaiderTrader drop order screenshot" />
             </div>
             <div class="shot-copy">
-              <h3>Drop order is based on rep</h3>
-              <p>The bot can decide who should drop first using trade rep, which gives players a clear rule instead of arguing in DMs.</p>
+              <h3>Let rep decide who drops first</h3>
+              <p>The `/drop` command uses trade rep to decide the order, so both players have a clear rule before the trade starts.</p>
             </div>
           </article>
         </div>
@@ -675,35 +680,35 @@
 
     <section id="tools">
       <div class="wrap">
-        <h2 class="section-title">The bot handles the trust and workflow details</h2>
+        <h2 class="section-title">Built to make trades easier to trust</h2>
         <p class="section-copy">
-          RaiderTrader is not just a listing board. It helps players inspect rep, see completed reviews, and decide how a trade should proceed before anything gets risky.
+          RaiderTrader gives you more than a trade board. You can check rep, look at completed reviews, and decide how to handle a trade before you risk your items.
         </p>
         <div class="ops-grid">
           <div class="ops-stack">
             <div class="embed-card">
               <span class="eyebrow-label">Trade Rep</span>
               <img src="assets/rep-check.png" alt="RaiderTrader rep check screenshot" />
-              <h3>Quick rep checks</h3>
-              <p>Use `repcheck` to see total reps and trade rep milestones before you decide whether a deal looks safe.</p>
+              <h3>Check rep before you trade</h3>
+              <p>Use `repcheck` to see total reps and trade-rep milestones before you decide whether a deal looks safe.</p>
             </div>
             <div class="embed-card">
               <span class="eyebrow-label">Review History</span>
               <img src="assets/rep-review.png" alt="RaiderTrader rep review screenshot" />
-              <h3>Completed trades become visible trust signals</h3>
-              <p>Rep reviews tie back to real tickets and real users, which is a stronger signal than vague screenshots or memory.</p>
+              <h3>See real reviews from completed trades</h3>
+              <p>Rep reviews tie back to real tickets and real users, giving you better trust signals than random screenshots or memory.</p>
             </div>
           </div>
           <div class="mini-grid">
             <div class="embed-card">
               <span class="eyebrow-label">Request Flow</span>
               <h3>List what you need</h3>
-              <p>Put missing blueprints and spare materials in front of the whole server instead of hoping the right person sees a message.</p>
+              <p>Put missing blueprints and spare materials in front of the whole server instead of hoping the right person notices a message.</p>
             </div>
             <div class="embed-card">
               <span class="eyebrow-label">Ticket Flow</span>
               <h3>Finalize or call a middleman</h3>
-              <p>Once a match is made, the bot gives both traders a more accountable path to finish the deal cleanly.</p>
+              <p>Once a match is made, both traders get a cleaner path to finish the deal with less confusion.</p>
             </div>
             <div class="embed-card">
               <span class="eyebrow-label">Rep Logic</span>
