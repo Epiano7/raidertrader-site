@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RaiderTrader | Safe Arc Raiders Trading</title>
+  <meta name="description" content="Safe Arc Raiders trading with rep tracking, guided tickets, and scam-reducing workflow." />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --bg-soft: #121922;
+      --card: #171f2b;
+      --text: #e8eef7;
+      --muted: #98a7bd;
+      --line: #273244;
+      --accent: #5ab3ff;
+      --accent-2: #86ffd0;
+      --danger: #ff7b7b;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(90,179,255,.12), transparent 28%),
+        radial-gradient(circle at top left, rgba(134,255,208,.08), transparent 22%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(11,15,20,.75);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .brand-badge {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #081018;
+      font-weight: 900;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #111823;
+      color: var(--text);
+      font-weight: 700;
+      transition: .18s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-1px); border-color: #3a4a63; }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), #3f8cff);
+      color: #081018;
+      border: none;
+      box-shadow: 0 10px 30px rgba(63,140,255,.28);
+    }
+
+    .hero {
+      padding: 72px 0 42px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      color: var(--accent-2);
+      background: rgba(255,255,255,.02);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: .96;
+      letter-spacing: -1.8px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .subtext {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .terminal {
+      background: #091018;
+      border: 1px solid #1e2a3b;
+      border-radius: 20px;
+      padding: 18px;
+      min-height: 390px;
+    }
+
+    .dots { display: flex; gap: 7px; margin-bottom: 14px; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; background: #2d3a4e; }
+    .dot:nth-child(1){ background: #ff7b7b; }
+    .dot:nth-child(2){ background: #ffd166; }
+    .dot:nth-child(3){ background: #86ffd0; }
+
+    .log {
+      display: grid;
+      gap: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 14px;
+    }
+
+    .log-line {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #101a27;
+      color: #d7e5f6;
+      border: 1px solid #1e2a3b;
+    }
+
+    .green { color: var(--accent-2); }
+    .blue { color: #84c8ff; }
+    .red { color: var(--danger); }
+
+    section { padding: 28px 0; }
+    .section-title {
+      font-size: clamp(1.65rem, 3vw, 2.3rem);
+      margin: 0 0 10px;
+      letter-spacing: -.8px;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 0 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      padding: 20px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .step-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 12px;
+      background: rgba(90,179,255,.18);
+      color: #a9d8ff;
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
+    }
+
+    details {
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px;
+      padding: 16px 18px;
+      background: rgba(255,255,255,.02);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    details p {
+      color: var(--muted);
+      margin: 12px 0 0;
+    }
+
+    .cta-box {
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(90,179,255,.12), rgba(134,255,208,.08));
+      border: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 38px 0 60px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.07);
+      color: var(--muted);
+      background: rgba(255,255,255,.02);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .grid-3,
+      .steps { grid-template-columns: 1fr; }
+      .nav-links a:not(.btn) { display: none; }
+      .hero { padding-top: 42px; }
+    }
+  </style>
+
+  <!--
+    STEP 1: Replace G-XXXXXXXXXX below with your Google tag ID.
+    If you already have a Google tag in another template/header, do not paste a duplicate.
+  -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!--
+    STEP 2: Replace the send_to value below with your Google Ads conversion ID/label.
+    Example format: AW-123456789/AbCdEfGhIjKlMnOpQr
+  -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) !== 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-123456789/REPLACE_ME',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <div class="brand-badge">RT</div>
+        <div>RaiderTrader</div>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn primary" href="https://discord.gg/REPLACE_INVITE" onclick="return gtag_report_conversion('https://discord.gg/REPLACE_INVITE');">Join Discord</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Safe Arc Raiders trading, minus the sketchy nonsense</div>
+        <h1>Trade smarter.<br>Get scammed less.</h1>
+        <p class="lead">
+          RaiderTrader helps Arc Raiders players find trades, track rep, and use guided ticket flows that reduce chaos and cut down scam risk.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://discord.gg/REPLACE_INVITE" onclick="return gtag_report_conversion('https://discord.gg/REPLACE_INVITE');">Join the Discord</a>
+          <a class="btn" href="#features">See how it works</a>
+        </div>
+        <div class="subtext">Fast setup. Ticket-based deals. Rep-based trust. No bloated nonsense.</div>
+        <div class="pill-row">
+          <div class="pill">Rep tracking</div>
+          <div class="pill">Trade tickets</div>
+          <div class="pill">Blueprint tools</div>
+          <div class="pill">Scam reduction</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="terminal">
+          <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="log">
+            <div class="log-line"><span class="blue">/trade post</span> → User lists an item</div>
+            <div class="log-line"><span class="green">Ticket opened</span> → buyer and seller are moved into a guided flow</div>
+            <div class="log-line">Rep, item details, and trade state stay visible in one place</div>
+            <div class="log-line"><span class="red">Less guesswork.</span> Less scam bait. Cleaner trades.</div>
+            <div class="log-line">Built for Arc Raiders communities that want actual structure, not a dead spam channel.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="features">
+      <div class="wrap">
+        <h2 class="section-title">Why people would use this instead of random DMs</h2>
+        <p class="section-copy">
+          Discord trading dies when there’s no structure. RaiderTrader makes listings visible, routes deals into organized tickets, and gives players trust signals before they risk a trade.
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Rep that actually matters</h3>
+            <p>Track completed deals and build visible trust over time instead of relying on vibes and screenshots.</p>
+          </div>
+          <div class="card">
+            <h3>Guided trade flow</h3>
+            <p>Move deals into dedicated ticket channels so both sides know what’s being traded and where the process stands.</p>
+          </div>
+          <div class="card">
+            <h3>Blueprint support</h3>
+            <p>Make it easier to track blueprint needs and match players with stuff they actually want.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <h2 class="section-title">How it works</h2>
+        <p class="section-copy">Keep the pitch simple. You are selling safety and convenience, not a giant feature list.</p>
+        <div class="steps">
+          <div class="card">
+            <div class="step-num">1</div>
+            <h3>Join the server</h3>
+            <p>Get access to the trading channels, bot commands, and active listings.</p>
+          </div>
+          <div class="card">
+            <div class="step-num">2</div>
+            <h3>Post or browse trades</h3>
+            <p>List what you have, search what you want, and spot potential matches faster.</p>
+          </div>
+          <div class="card">
+            <div class="step-num">3</div>
+            <h3>Close deals in tickets</h3>
+            <p>Use a cleaner, more accountable workflow instead of random DMs and missing context.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="cta-box">
+          <div>
+            <h2 class="section-title" style="margin-bottom:6px;">Ready to trade with less risk?</h2>
+            <div class="section-copy" style="margin:0; max-width:620px;">Join the RaiderTrader Discord and start using a system that makes your marketplace look alive and organized.</div>
+          </div>
+          <a class="btn primary" href="https://discord.gg/REPLACE_INVITE" onclick="return gtag_report_conversion('https://discord.gg/REPLACE_INVITE');">Join Discord</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq">
+          <details>
+            <summary>Is this an official Arc Raiders service?</summary>
+            <p>No. It’s a community-run trading service built for players who want more structure and less nonsense when making deals.</p>
+          </details>
+          <details>
+            <summary>What problem does this solve?</summary>
+            <p>Dead trading channels, messy DMs, low trust, poor deal visibility, and scam-prone trade coordination.</p>
+          </details>
+          <details>
+            <summary>How should I measure conversions?</summary>
+            <p>Use the Discord join button click as your primary Google Ads conversion until you have a more advanced funnel.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      RaiderTrader is a community project for Arc Raiders players. Replace the placeholder invite link and Google tag values before publishing.
+    </div>
+  </footer>
+</body>
+</html>
