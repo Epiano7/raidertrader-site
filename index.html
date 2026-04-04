@@ -386,6 +386,16 @@
       image-rendering: auto;
     }
 
+    .expandable-image {
+      cursor: zoom-in;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .expandable-image:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 38px rgba(0, 0, 0, 0.3);
+    }
+
     .shot-copy {
       padding: 18px 20px 20px;
     }
@@ -499,6 +509,62 @@
       padding: 38px 0 60px;
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 24px;
+      background: rgba(5, 8, 14, 0.88);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .lightbox.open {
+      display: grid;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      width: min(100%, 1280px);
+      max-height: 100%;
+      display: grid;
+      gap: 12px;
+      justify-items: center;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: min(84vh, 1080px);
+      width: auto;
+      height: auto;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      background: #0a0f18;
+    }
+
+    .lightbox-caption {
+      color: #dbe7f6;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      background: rgba(10, 15, 24, 0.92);
+      color: #eef5ff;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
     }
 
     @media (max-width: 980px) {
@@ -643,7 +709,7 @@
         <div class="showcase-grid">
           <article class="card shot-card">
             <div class="shot-media">
-              <img src="assets/request-card.png" alt="RaiderTrader request screenshot" />
+              <img class="expandable-image" src="assets/request-card.png" alt="RaiderTrader request screenshot" />
             </div>
             <div class="shot-copy">
               <h3>Post a request in seconds</h3>
@@ -652,7 +718,7 @@
           </article>
           <article class="card shot-card">
             <div class="shot-media">
-              <img src="assets/trade-ticket.png" alt="RaiderTrader trade ticket screenshot" />
+              <img class="expandable-image" src="assets/trade-ticket.png" alt="RaiderTrader trade ticket screenshot" />
             </div>
             <div class="shot-copy">
               <h3>Move the deal into a ticket</h3>
@@ -661,7 +727,7 @@
           </article>
           <article class="card shot-card">
             <div class="shot-media">
-              <img src="assets/drop-order.png" alt="RaiderTrader drop order screenshot" />
+              <img class="expandable-image" src="assets/drop-order.png" alt="RaiderTrader drop order screenshot" />
             </div>
             <div class="shot-copy">
               <h3>Let rep decide who drops first</h3>
@@ -682,13 +748,13 @@
           <div class="ops-stack">
             <div class="embed-card">
               <span class="eyebrow-label">Trade Rep</span>
-              <img src="assets/rep-check.png" alt="RaiderTrader rep check screenshot" />
+              <img class="expandable-image" src="assets/rep-check.png" alt="RaiderTrader rep check screenshot" />
               <h3>Check rep before you trade</h3>
               <p>Use `repcheck` to see total reps and trade-rep milestones before you decide whether a deal looks safe.</p>
             </div>
             <div class="embed-card">
               <span class="eyebrow-label">Review History</span>
-              <img src="assets/rep-review.png" alt="RaiderTrader rep review screenshot" />
+              <img class="expandable-image" src="assets/rep-review.png" alt="RaiderTrader rep review screenshot" />
               <h3>See real reviews from completed trades</h3>
               <p>Rep reviews tie back to real tickets and real users, giving you better trust signals than random screenshots or memory.</p>
             </div>
@@ -783,5 +849,58 @@
       RaiderTrader is a community project for ARC Raiders players. Please contact epiano7 on Discord if you have any questions or concerns
     </div>
   </footer>
+
+  <div class="lightbox" id="image-lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
+      <img class="lightbox-image" id="lightbox-image" alt="" />
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var lightbox = document.getElementById('image-lightbox');
+      var lightboxImage = document.getElementById('lightbox-image');
+      var lightboxCaption = document.getElementById('lightbox-caption');
+      var lightboxClose = document.getElementById('lightbox-close');
+      var images = document.querySelectorAll('.expandable-image');
+
+      function openLightbox(image) {
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+        lightboxCaption.textContent = image.alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.src = '';
+        document.body.style.overflow = '';
+      }
+
+      images.forEach(function (image) {
+        image.addEventListener('click', function () {
+          openLightbox(image);
+        });
+      });
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && lightbox.classList.contains('open')) {
+          closeLightbox();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
