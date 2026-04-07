@@ -329,6 +329,142 @@
       color: var(--muted);
     }
 
+    .pulse-shell {
+      padding: 22px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(88, 180, 255, 0.12), rgba(156, 255, 86, 0.045)),
+        rgba(12, 18, 28, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .pulse-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .pulse-head .section-copy {
+      margin-bottom: 0;
+    }
+
+    .updated-at {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .pulse-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .pulse-stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(8, 13, 21, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pulse-stat strong {
+      display: block;
+      font-size: 1.75rem;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .pulse-stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .trade-feed {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .trade-card {
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(9, 15, 24, 0.86);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .trade-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .trade-kind {
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(88, 180, 255, 0.12);
+      color: #a9d8ff;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .trade-rep {
+      color: #b9fb8a;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .trade-card h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .trade-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .item-chip {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #ddeaff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .blueprint-strip {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pulse-cta {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: var(--muted);
+    }
+
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -575,6 +711,8 @@
       .showcase-grid,
       .steps,
       .metric-row,
+      .pulse-grid,
+      .trade-feed,
       .ops-grid,
       .mini-grid {
         grid-template-columns: 1fr;
@@ -619,10 +757,11 @@
       </div>
       <div class="nav-links">
         <a href="#features">Features</a>
+        <a href="#live-trades">Live Trades</a>
         <a href="#screenshots">Screenshots</a>
         <a href="#tools">Bot Tools</a>
         <a href="#faq">FAQ</a>
-        <a class="btn primary" href="https://discord.gg/v5jFrXT43r" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Join The RaiderTrader Discord</a>
+        <a class="btn primary" href="https://discord.gg/raidertrader" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Join The RaiderTrader Discord</a>
       </div>
     </div>
   </nav>
@@ -636,7 +775,7 @@
           Do you have so many duplicate blueprints you do not know what to do with? Have you been missing a blueprint and cannot find it anywhere? RaiderTrader is built fully inside a Discord server and uses a custom application to manage trade requests, rep, middleman requests, and more. Run a single command to post what you need and what you have, track blueprints the bot marks as missing, and get your listings in front of other Raiders fast.
         </p>
         <div class="cta-row">
-          <a class="btn primary" href="https://discord.gg/v5jFrXT43r" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Join The RaiderTrader Discord</a>
+          <a class="btn primary" href="https://discord.gg/raidertrader" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Join The RaiderTrader Discord</a>
           <a class="btn" href="#screenshots">View real examples</a>
         </div>
         <div class="subtext">Find rare blueprints, trade crafting materials, finish quest requirements, and connect with fellow Raiders in one place.</div>
@@ -679,6 +818,62 @@
   </header>
 
   <main>
+    <section id="live-trades">
+      <div class="wrap">
+        <div class="pulse-shell">
+          <div class="pulse-head">
+            <div>
+              <h2 class="section-title">Live trade pulse</h2>
+              <p class="section-copy">A quick look at what Raiders are looking for right now. Join the Discord to reply, post your own list, or open a ticket.</p>
+            </div>
+            <div class="updated-at" id="community-updated">Loading trade board...</div>
+          </div>
+
+          <div class="pulse-grid">
+            <div class="pulse-stat">
+              <strong id="stat-open-trades">--</strong>
+              <span>open trade posts</span>
+            </div>
+            <div class="pulse-stat">
+              <strong id="stat-requests">--</strong>
+              <span>active requests</span>
+            </div>
+            <div class="pulse-stat">
+              <strong id="stat-blueprints">--</strong>
+              <span>blueprint requests</span>
+            </div>
+            <div class="pulse-stat">
+              <strong id="stat-reps">--</strong>
+              <span>completed trade reps</span>
+            </div>
+          </div>
+
+          <div class="trade-feed" id="trade-feed">
+            <article class="trade-card">
+              <div class="trade-top">
+                <span class="trade-kind">Discord</span>
+                <span class="trade-rep">live soon</span>
+              </div>
+              <h3>Trade previews are being wired up</h3>
+              <p>Join the Discord to see the current board, post a request, or reply to a trader.</p>
+              <div class="trade-items">
+                <span class="item-chip">Blueprints</span>
+                <span class="item-chip">Crafting materials</span>
+                <span class="item-chip">Trade tickets</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="blueprint-strip" id="blueprint-strip" aria-label="Blueprints requested right now"></div>
+
+          <div class="pulse-cta">
+            <span>Previews are display-only. Trading happens inside the Discord.</span>
+            <a class="btn primary community-invite" href="https://discord.gg/raidertrader" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Join and reply</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="features">
       <div class="wrap">
         <h2 class="section-title">A trading platform built for ARC Raiders players</h2>
@@ -752,7 +947,7 @@
               <span class="eyebrow-label">Trade Rep</span>
               <img class="expandable-image" src="assets/rep-check.png" alt="RaiderTrader rep check screenshot" />
               <h3>Check rep before you trade</h3>
-              <p>Use `repcheck` to see total reps and trade-rep milestones before you decide whether a deal looks safe.</p>
+              <p>Use `/repcheck` to see total reps and trade-rep milestones before you decide whether a deal looks safe.</p>
             </div>
             <div class="embed-card">
               <span class="eyebrow-label">Review History</span>
@@ -820,7 +1015,7 @@
               Join our trading platform today to find missing blueprints, trade crafting materials, and connect with other players working on their collections and quests.
             </div>
           </div>
-          <a class="btn primary" href="https://discord.gg/v5jFrXT43r" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Join Discord</a>
+          <a class="btn primary" href="https://discord.gg/raidertrader" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Join Discord</a>
         </div>
       </div>
     </section>
@@ -859,6 +1054,156 @@
       <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
   </div>
+
+  <script>
+    (function () {
+      var fallback = {
+        updated_at: null,
+        invite_url: 'https://discord.gg/raidertrader',
+        stats: {
+          open_trades: 0,
+          requests: 0,
+          blueprint_requests: 0,
+          completed_trade_reps: 0
+        },
+        recent_trades: [],
+        hot_blueprints: []
+      };
+
+      function text(id, value) {
+        var node = document.getElementById(id);
+        if (node) {
+          node.textContent = String(value);
+        }
+      }
+
+      function cleanList(items) {
+        if (!Array.isArray(items)) {
+          return [];
+        }
+        return items.filter(Boolean).map(function (item) {
+          return String(item).slice(0, 80);
+        });
+      }
+
+      function renderTradeCard(trade) {
+        var intent = String(trade.intent || 'trade');
+        var label = String(trade.label || (intent === 'request' ? 'Looking for' : 'Trading'));
+        var items = cleanList(trade.items);
+        var wants = cleanList(trade.wants);
+        var title = label;
+        if (items.length) {
+          title += ' ' + items[0];
+        }
+        var chips = items.concat(wants.map(function (want) { return 'Wants: ' + want; })).slice(0, 5);
+        if (!chips.length) {
+          chips = ['Join Discord to see current posts'];
+        }
+
+        var article = document.createElement('article');
+        article.className = 'trade-card';
+
+        var top = document.createElement('div');
+        top.className = 'trade-top';
+
+        var kind = document.createElement('span');
+        kind.className = 'trade-kind';
+        kind.textContent = intent === 'offers' ? 'Offers' : intent;
+
+        var rep = document.createElement('span');
+        rep.className = 'trade-rep';
+        rep.textContent = String(Number(trade.trade_rep || 0)) + ' trade rep';
+
+        top.appendChild(kind);
+        top.appendChild(rep);
+        article.appendChild(top);
+
+        var heading = document.createElement('h3');
+        heading.textContent = title;
+        article.appendChild(heading);
+
+        var copy = document.createElement('p');
+        copy.textContent = 'Join the Discord to reply or open a trade ticket.';
+        article.appendChild(copy);
+
+        var itemWrap = document.createElement('div');
+        itemWrap.className = 'trade-items';
+        chips.forEach(function (chip) {
+          var span = document.createElement('span');
+          span.className = 'item-chip';
+          span.textContent = chip;
+          itemWrap.appendChild(span);
+        });
+        article.appendChild(itemWrap);
+        return article;
+      }
+
+      function renderCommunity(data) {
+        var stats = data.stats || {};
+        text('stat-open-trades', stats.open_trades || 0);
+        text('stat-requests', stats.requests || 0);
+        text('stat-blueprints', stats.blueprint_requests || 0);
+        text('stat-reps', stats.completed_trade_reps || 0);
+
+        var updated = document.getElementById('community-updated');
+        if (updated) {
+          if (data.updated_at) {
+            var date = new Date(data.updated_at);
+            updated.textContent = isNaN(date.getTime()) ? 'Updated recently' : 'Updated ' + date.toLocaleString();
+          } else {
+            updated.textContent = 'Preview data';
+          }
+        }
+
+        var invite = String(data.invite_url || fallback.invite_url);
+        document.querySelectorAll('.community-invite').forEach(function (link) {
+          link.href = invite;
+        });
+
+        var feed = document.getElementById('trade-feed');
+        if (feed) {
+          feed.innerHTML = '';
+          var trades = Array.isArray(data.recent_trades) ? data.recent_trades : [];
+          if (trades.length) {
+            trades.slice(0, 6).forEach(function (trade) {
+              feed.appendChild(renderTradeCard(trade));
+            });
+          } else {
+            var empty = document.createElement('article');
+            empty.className = 'trade-card';
+            empty.innerHTML = '<div class="trade-top"><span class="trade-kind">Discord</span><span class="trade-rep">live soon</span></div><h3>Trade previews are being wired up</h3><p>Join the Discord to see the current board, post a request, or reply to a trader.</p><div class="trade-items"><span class="item-chip">Blueprints</span><span class="item-chip">Crafting materials</span><span class="item-chip">Trade tickets</span></div>';
+            feed.appendChild(empty);
+          }
+        }
+
+        var strip = document.getElementById('blueprint-strip');
+        if (strip) {
+          strip.innerHTML = '';
+          var blueprints = cleanList(data.hot_blueprints);
+          if (blueprints.length) {
+            blueprints.slice(0, 8).forEach(function (bp) {
+              var chip = document.createElement('span');
+              chip.className = 'item-chip';
+              chip.textContent = bp;
+              strip.appendChild(chip);
+            });
+          }
+        }
+      }
+
+      fetch('assets/community.json', { cache: 'no-store' })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('community feed unavailable');
+          }
+          return response.json();
+        })
+        .then(renderCommunity)
+        .catch(function () {
+          renderCommunity(fallback);
+        });
+    })();
+  </script>
 
   <script>
     (function () {
