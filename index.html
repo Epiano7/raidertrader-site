@@ -10,6 +10,23 @@
     name="description"
     content="Find missing blueprints, trade crafting materials, and connect with fellow Raiders on a Discord trading hub built for ARC Raiders."
   />
+  <link rel="canonical" href="https://epiano7.github.io/raidertrader-site/" />
+  <meta name="theme-color" content="#080c14" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="RaiderTrader" />
+  <meta property="og:title" content="RaiderTrader | ARC Raiders Blueprint Trades on Discord" />
+  <meta property="og:description" content="Find missing blueprints, trade crafting materials, and connect with fellow Raiders on a Discord trading hub built for ARC Raiders." />
+  <meta property="og:url" content="https://epiano7.github.io/raidertrader-site/" />
+  <meta property="og:image" content="https://epiano7.github.io/raidertrader-site/assets/raider-trader-small.png" />
+  <meta property="og:image:secure_url" content="https://epiano7.github.io/raidertrader-site/assets/raider-trader-small.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" content="RaiderTrader logo" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="RaiderTrader | ARC Raiders Blueprint Trades on Discord" />
+  <meta name="twitter:description" content="Find missing blueprints, trade crafting materials, and connect with fellow Raiders on a Discord trading hub built for ARC Raiders." />
+  <meta name="twitter:image" content="https://epiano7.github.io/raidertrader-site/assets/raider-trader-small.png" />
   <style>
     :root {
       --bg: #080c14;
@@ -360,7 +377,7 @@
 
     .pulse-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 12px;
       margin-bottom: 16px;
     }
@@ -843,8 +860,12 @@
               <span>blueprint requests</span>
             </div>
             <div class="pulse-stat">
+              <strong id="stat-completed-trades">--</strong>
+              <span>finalized trades</span>
+            </div>
+            <div class="pulse-stat">
               <strong id="stat-reps">--</strong>
-              <span>completed trade reps</span>
+              <span>trade reps given</span>
             </div>
           </div>
 
@@ -1064,6 +1085,7 @@
           open_trades: 0,
           requests: 0,
           blueprint_requests: 0,
+          completed_trades: 0,
           completed_trade_reps: 0
         },
         recent_trades: [],
@@ -1143,6 +1165,7 @@
         text('stat-open-trades', stats.open_trades || 0);
         text('stat-requests', stats.requests || 0);
         text('stat-blueprints', stats.blueprint_requests || 0);
+        text('stat-completed-trades', stats.completed_trades || 0);
         text('stat-reps', stats.completed_trade_reps || 0);
 
         var updated = document.getElementById('community-updated');
