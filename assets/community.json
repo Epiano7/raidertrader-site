@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-04-09T20:05:05Z",
+  "updated_at": "2026-04-09T20:23:14Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 2,
+    "open_trades": 1,
     "requests": 1,
-    "active_traders": 2,
+    "active_traders": 1,
     "blueprint_requests": 1,
     "completed_trades": 31,
     "completed_trade_reps": 41
@@ -22,18 +22,6 @@
       "wants": [],
       "trade_rep": 10,
       "created_ts": 1775362591
-    },
-    {
-      "intent": "trade",
-      "label": "Trading",
-      "items": [
-        "Tempest Blueprint"
-      ],
-      "wants": [
-        "Vita Shot Blueprint"
-      ],
-      "trade_rep": 1,
-      "created_ts": 1775255628
     }
   ],
   "hot_blueprints": [
