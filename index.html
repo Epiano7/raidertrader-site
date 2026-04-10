@@ -213,6 +213,30 @@
       margin-bottom: 18px;
     }
 
+    .hero-social-proof {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 0 0 18px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(185, 251, 138, 0.18);
+      background: linear-gradient(135deg, rgba(185, 251, 138, 0.12), rgba(88, 180, 255, 0.08));
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero-social-proof strong {
+      font-size: clamp(1.5rem, 3.1vw, 2.35rem);
+      line-height: 1;
+      color: #f5ffe9;
+    }
+
+    .hero-social-proof span {
+      font-size: 14px;
+      color: #c7d8eb;
+      max-width: 260px;
+    }
+
     .subtext {
       font-size: 14px;
       color: var(--muted);
@@ -795,6 +819,10 @@
           <a class="btn primary" href="https://discord.gg/raidertrader" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Join The RaiderTrader Discord</a>
           <a class="btn" href="#screenshots">View real examples</a>
         </div>
+        <div class="hero-social-proof">
+          <strong id="hero-member-count">--</strong>
+          <span>Raiders already in the Discord trading hub</span>
+        </div>
         <div class="subtext">Find rare blueprints, trade crafting materials, finish quest requirements, and connect with fellow Raiders in one place.</div>
         <div class="pill-row">
           <div class="pill">Blueprint trades</div>
@@ -1180,6 +1208,7 @@
         text('stat-reps', stats.completed_trade_reps || 0);
         text('stat-members', stats.member_count || 0);
         text('stat-messages', stats.total_messages || 0);
+        text('hero-member-count', stats.member_count || 0);
 
         var updated = document.getElementById('community-updated');
         if (updated) {
