@@ -7,7 +7,9 @@
     "active_traders": 2,
     "blueprint_requests": 1,
     "completed_trades": 3,
-    "completed_trade_reps": 41
+    "completed_trade_reps": 41,
+    "member_count": 0,
+    "total_messages": 0
   },
   "recent_trades": [
     {

@@ -377,7 +377,7 @@
 
     .pulse-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(7, 1fr);
       gap: 12px;
       margin-bottom: 16px;
     }
@@ -867,6 +867,14 @@
               <strong id="stat-reps">--</strong>
               <span>trade reps given</span>
             </div>
+            <div class="pulse-stat">
+              <strong id="stat-members">--</strong>
+              <span>Discord members</span>
+            </div>
+            <div class="pulse-stat">
+              <strong id="stat-messages">--</strong>
+              <span>messages counted</span>
+            </div>
           </div>
 
           <div class="trade-feed" id="trade-feed">
@@ -1086,7 +1094,9 @@
           requests: 0,
           blueprint_requests: 0,
           completed_trades: 0,
-          completed_trade_reps: 0
+          completed_trade_reps: 0,
+          member_count: 0,
+          total_messages: 0
         },
         recent_trades: [],
         hot_blueprints: []
@@ -1095,7 +1105,8 @@
       function text(id, value) {
         var node = document.getElementById(id);
         if (node) {
-          node.textContent = String(value);
+          var number = Number(value);
+          node.textContent = Number.isFinite(number) ? number.toLocaleString() : String(value);
         }
       }
 
@@ -1167,6 +1178,8 @@
         text('stat-blueprints', stats.blueprint_requests || 0);
         text('stat-completed-trades', stats.completed_trades || 0);
         text('stat-reps', stats.completed_trade_reps || 0);
+        text('stat-members', stats.member_count || 0);
+        text('stat-messages', stats.total_messages || 0);
 
         var updated = document.getElementById('community-updated');
         if (updated) {
