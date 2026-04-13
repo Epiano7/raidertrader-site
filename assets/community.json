@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-04-13T16:50:05Z",
+  "updated_at": "2026-04-13T17:25:05Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 3,
+    "open_trades": 4,
     "requests": 2,
-    "active_traders": 1,
+    "active_traders": 2,
     "blueprint_requests": 1,
     "completed_trades": 34,
     "completed_trade_reps": 45,
@@ -12,6 +12,18 @@
     "total_messages": 167
   },
   "recent_trades": [
+    {
+      "intent": "offers",
+      "label": "Taking offers on",
+      "items": [
+        "Surge Coil Blueprint"
+      ],
+      "wants": [
+        "Offers"
+      ],
+      "trade_rep": 1,
+      "created_ts": 1776100702
+    },
     {
       "intent": "request",
       "label": "Looking for",
