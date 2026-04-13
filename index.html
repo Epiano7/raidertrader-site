@@ -92,6 +92,56 @@
       padding: 14px 0;
     }
 
+    .giveaway-banner {
+      position: relative;
+      z-index: 15;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(135deg, rgba(255, 184, 28, 0.18), rgba(88, 180, 255, 0.16) 48%, rgba(156, 255, 86, 0.12)),
+        rgba(10, 15, 24, 0.96);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+    }
+
+    .giveaway-banner-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+    }
+
+    .giveaway-banner-copy {
+      display: grid;
+      gap: 4px;
+    }
+
+    .giveaway-banner-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ffe39a;
+    }
+
+    .giveaway-banner-copy strong {
+      font-size: 1rem;
+    }
+
+    .giveaway-banner-copy span {
+      color: #d4e2f3;
+      font-size: 14px;
+    }
+
+    .giveaway-banner-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .brand {
       display: flex;
       align-items: center;
@@ -215,7 +265,7 @@
 
     .hero-social-proof {
       display: inline-flex;
-      align-items: baseline;
+      align-items: center;
       gap: 12px;
       margin: 0 0 18px;
       padding: 14px 18px;
@@ -257,6 +307,105 @@
       background: rgba(255, 255, 255, 0.03);
       font-size: 13px;
       font-weight: 700;
+    }
+
+    .giveaway-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+      gap: 18px;
+      margin: 0 0 18px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 184, 28, 0.24);
+      background:
+        radial-gradient(circle at top right, rgba(255, 184, 28, 0.16), transparent 28%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+        rgba(11, 17, 28, 0.96);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.26);
+      overflow: hidden;
+    }
+
+    .giveaway-copy {
+      display: grid;
+      align-content: start;
+      gap: 10px;
+    }
+
+    .giveaway-kicker {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255, 184, 28, 0.12);
+      border: 1px solid rgba(255, 184, 28, 0.22);
+      color: #ffd981;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .giveaway-card h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      line-height: 1.02;
+      letter-spacing: -0.8px;
+    }
+
+    .giveaway-card p {
+      margin: 0;
+      color: #d5e1f1;
+    }
+
+    .giveaway-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .giveaway-meta span {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 13px;
+      font-weight: 700;
+      color: #e8f1ff;
+    }
+
+    .giveaway-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .giveaway-note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .giveaway-shot {
+      align-self: stretch;
+      display: grid;
+      place-items: center;
+      padding: 14px;
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(124, 143, 255, 0.14), rgba(13, 18, 29, 0.82)),
+        rgba(13, 18, 29, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .giveaway-shot img {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
     }
 
     .panel {
@@ -759,6 +908,15 @@
         grid-template-columns: 1fr;
       }
 
+      .giveaway-card {
+        grid-template-columns: 1fr;
+      }
+
+      .giveaway-banner-inner {
+        align-items: start;
+        flex-direction: column;
+      }
+
       .nav-links a:not(.btn) { display: none; }
       .hero { padding-top: 42px; }
       .hero::after {
@@ -807,6 +965,20 @@
     </div>
   </nav>
 
+  <div class="giveaway-banner" data-giveaway-expiry>
+    <div class="wrap giveaway-banner-inner">
+      <div class="giveaway-banner-copy">
+        <div class="giveaway-banner-kicker">Live Giveaway</div>
+        <strong>Maxed Bobcat 4 giveaway is live in the RaiderTrader Discord.</strong>
+        <span>If the winner does not want the Bobcat 4, they can claim 3 months of Discord Nitro instead. Ends April 18, 2026 at 12 PM ET.</span>
+      </div>
+      <div class="giveaway-banner-actions">
+        <a class="btn primary community-invite" href="https://discord.gg/raidertrader" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Join giveaway</a>
+        <a class="btn" href="#giveaway">See prize</a>
+      </div>
+    </div>
+  </div>
+
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -819,6 +991,26 @@
           <a class="btn primary" href="https://discord.gg/raidertrader" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Join The RaiderTrader Discord</a>
           <a class="btn" href="#screenshots">View real examples</a>
         </div>
+        <section class="giveaway-card" id="giveaway" data-giveaway-expiry aria-label="Live giveaway">
+          <div class="giveaway-copy">
+            <div class="giveaway-kicker">Live Giveaway</div>
+            <h2>Win a maxed Bobcat 4 or take 3 months of Nitro instead.</h2>
+            <p>There is an active giveaway running in the Discord right now. Join the server, enter the giveaway, and if you do not want the Bobcat 4 you can claim 3 months of Discord Nitro as the prize instead.</p>
+            <div class="giveaway-meta">
+              <span>Prize: Maxed Bobcat 4</span>
+              <span>Alt prize: 3 months Nitro</span>
+              <span>Ends: April 18, 2026 at 12 PM ET</span>
+            </div>
+            <div class="giveaway-actions">
+              <a class="btn primary community-invite" href="https://discord.gg/raidertrader" target="_blank" rel="noopener noreferrer" onclick="gtag_report_conversion()">Enter on Discord</a>
+              <a class="btn" href="#live-trades">See the server activity</a>
+            </div>
+            <div class="giveaway-note">This promo removes itself automatically after the deadline.</div>
+          </div>
+          <div class="giveaway-shot">
+            <img class="expandable-image" src="assets/bobcat4-giveaway.png" alt="Maxed Bobcat 4 giveaway prize" />
+          </div>
+        </section>
         <div class="hero-social-proof">
           <strong id="hero-member-count">--</strong>
           <span>Raiders already in the Discord trading hub</span>
@@ -1111,6 +1303,25 @@
       <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
   </div>
+
+  <script>
+    (function () {
+      // Noon in New York on April 18, 2026.
+      var giveawayCutoff = Date.UTC(2026, 3, 18, 16, 0, 0);
+      function removeGiveaway() {
+        document.querySelectorAll('[data-giveaway-expiry]').forEach(function (node) {
+          node.remove();
+        });
+      }
+
+      var remaining = giveawayCutoff - Date.now();
+      if (remaining <= 0) {
+        removeGiveaway();
+      } else {
+        window.setTimeout(removeGiveaway, remaining);
+      }
+    })();
+  </script>
 
   <script>
     (function () {
