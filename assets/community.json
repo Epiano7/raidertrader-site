@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-04-14T20:00:05Z",
+  "updated_at": "2026-04-14T20:35:05Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 5,
-    "requests": 3,
+    "open_trades": 4,
+    "requests": 2,
     "active_traders": 3,
-    "blueprint_requests": 2,
+    "blueprint_requests": 1,
     "completed_trades": 34,
     "completed_trade_reps": 45,
     "member_count": 101,
@@ -45,16 +45,6 @@
       "created_ts": 1776034944
     },
     {
-      "intent": "request",
-      "label": "Looking for",
-      "items": [
-        "Surge Coil Blueprint"
-      ],
-      "wants": [],
-      "trade_rep": 10,
-      "created_ts": 1776019257
-    },
-    {
       "intent": "offers",
       "label": "Taking offers on",
       "items": [
@@ -68,7 +58,6 @@
     }
   ],
   "hot_blueprints": [
-    "Silencer I Blueprint",
-    "Surge Coil Blueprint"
+    "Silencer I Blueprint"
   ]
 }
