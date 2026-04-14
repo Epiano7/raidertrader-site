@@ -1,17 +1,40 @@
 {
-  "updated_at": "2026-04-14T02:10:05Z",
+  "updated_at": "2026-04-14T02:45:05Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 4,
-    "requests": 2,
-    "active_traders": 2,
-    "blueprint_requests": 1,
+    "open_trades": 6,
+    "requests": 4,
+    "active_traders": 3,
+    "blueprint_requests": 3,
     "completed_trades": 34,
     "completed_trade_reps": 45,
     "member_count": 101,
-    "total_messages": 184
+    "total_messages": 194
   },
   "recent_trades": [
+    {
+      "intent": "request",
+      "label": "Looking for",
+      "items": [
+        "Silencer I Blueprint"
+      ],
+      "wants": [],
+      "trade_rep": 1,
+      "created_ts": 1776133451
+    },
+    {
+      "intent": "request",
+      "label": "Looking for",
+      "items": [
+        "Angled Grip II Blueprint",
+        "Angled Grip III Blueprint",
+        "Anvil Blueprint",
+        "Aphelion Blueprint"
+      ],
+      "wants": [],
+      "trade_rep": 1,
+      "created_ts": 1776133402
+    },
     {
       "intent": "offers",
       "label": "Taking offers on",
@@ -58,6 +81,13 @@
     }
   ],
   "hot_blueprints": [
-    "Surge Coil Blueprint"
+    "Silencer I Blueprint",
+    "Surge Coil Blueprint",
+    "Angled Grip II Blueprint",
+    "Angled Grip III Blueprint",
+    "Anvil Blueprint",
+    "Aphelion Blueprint",
+    "Barricade Kit Blueprint",
+    "Bettina Blueprint"
   ]
 }
