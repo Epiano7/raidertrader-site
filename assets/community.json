@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-04-17T23:15:06Z",
+  "updated_at": "2026-04-17T23:45:06Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 4,
+    "open_trades": 5,
     "requests": 2,
-    "active_traders": 3,
+    "active_traders": 4,
     "blueprint_requests": 1,
     "completed_trades": 34,
     "completed_trade_reps": 45,
@@ -12,6 +12,18 @@
     "total_messages": 940
   },
   "recent_trades": [
+    {
+      "intent": "trade",
+      "label": "Trading",
+      "items": [
+        "Canto Blueprint"
+      ],
+      "wants": [
+        "Dolabra Blueprint"
+      ],
+      "trade_rep": 2,
+      "created_ts": 1776469266
+    },
     {
       "intent": "request",
       "label": "Looking for",
