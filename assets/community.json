@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-04-18T20:25:05Z",
+  "updated_at": "2026-04-18T21:00:05Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 5,
-    "requests": 2,
+    "open_trades": 4,
+    "requests": 1,
     "active_traders": 4,
     "blueprint_requests": 1,
     "completed_trades": 36,
@@ -45,16 +45,6 @@
       ],
       "trade_rep": 1,
       "created_ts": 1776100702
-    },
-    {
-      "intent": "request",
-      "label": "Looking for",
-      "items": [
-        "Queen Reactor"
-      ],
-      "wants": [],
-      "trade_rep": 11,
-      "created_ts": 1776034944
     },
     {
       "intent": "offers",
