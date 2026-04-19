@@ -1,29 +1,17 @@
 {
-  "updated_at": "2026-04-19T17:10:05Z",
+  "updated_at": "2026-04-19T17:45:05Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 4,
+    "open_trades": 3,
     "requests": 1,
-    "active_traders": 4,
+    "active_traders": 3,
     "blueprint_requests": 1,
     "completed_trades": 36,
     "completed_trade_reps": 48,
     "member_count": 109,
-    "total_messages": 1057
+    "total_messages": 1060
   },
   "recent_trades": [
-    {
-      "intent": "offers",
-      "label": "Taking offers on",
-      "items": [
-        "Rusted Gear x2"
-      ],
-      "wants": [
-        "Offers"
-      ],
-      "trade_rep": 0,
-      "created_ts": 1776479137
-    },
     {
       "intent": "request",
       "label": "Looking for",
