@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-04-19T17:45:05Z",
+  "updated_at": "2026-04-19T18:15:05Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 3,
+    "open_trades": 2,
     "requests": 1,
-    "active_traders": 3,
+    "active_traders": 2,
     "blueprint_requests": 1,
     "completed_trades": 36,
     "completed_trade_reps": 48,
@@ -33,18 +33,6 @@
       ],
       "trade_rep": 1,
       "created_ts": 1776100702
-    },
-    {
-      "intent": "offers",
-      "label": "Taking offers on",
-      "items": [
-        "Anvil Blueprint"
-      ],
-      "wants": [
-        "Offers"
-      ],
-      "trade_rep": 11,
-      "created_ts": 1776017612
     }
   ],
   "hot_blueprints": [
