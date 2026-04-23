@@ -1,27 +1,17 @@
 {
-  "updated_at": "2026-04-22T23:35:05Z",
+  "updated_at": "2026-04-23T00:10:05Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 2,
-    "requests": 2,
-    "active_traders": 2,
+    "open_trades": 1,
+    "requests": 1,
+    "active_traders": 1,
     "blueprint_requests": 1,
     "completed_trades": 38,
     "completed_trade_reps": 51,
     "member_count": 108,
-    "total_messages": 1083
+    "total_messages": 1085
   },
   "recent_trades": [
-    {
-      "intent": "request",
-      "label": "Looking for",
-      "items": [
-        "Bastion Cell"
-      ],
-      "wants": [],
-      "trade_rep": 1,
-      "created_ts": 1776900142
-    },
     {
       "intent": "request",
       "label": "Looking for",
