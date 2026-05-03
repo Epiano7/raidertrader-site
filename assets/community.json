@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-05-03T20:29:46Z",
+  "updated_at": "2026-05-03T21:00:08Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 1,
+    "open_trades": 2,
     "requests": 0,
     "active_traders": 1,
     "blueprint_requests": 0,
@@ -12,6 +12,18 @@
     "total_messages": 1237
   },
   "recent_trades": [
+    {
+      "intent": "offers",
+      "label": "Taking offers on",
+      "items": [
+        "Angled Grip II Blueprint"
+      ],
+      "wants": [
+        "Offers"
+      ],
+      "trade_rep": 13,
+      "created_ts": 1777840294
+    },
     {
       "intent": "offers",
       "label": "Taking offers on",
