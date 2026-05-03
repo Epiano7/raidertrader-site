@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-03T03:15:05Z",
+  "updated_at": "2026-05-03T03:45:05Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
     "open_trades": 0,
@@ -8,7 +8,7 @@
     "blueprint_requests": 0,
     "completed_trades": 39,
     "completed_trade_reps": 53,
-    "member_count": 110,
+    "member_count": 109,
     "total_messages": 1237
   },
   "recent_trades": [],
