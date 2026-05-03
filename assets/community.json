@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-03T18:52:40Z",
+  "updated_at": "2026-05-03T19:25:05Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
     "open_trades": 1,
@@ -16,13 +16,13 @@
       "intent": "offers",
       "label": "Taking offers on",
       "items": [
-        "Barricade Kit Blueprint"
+        "Angled Grip III Blueprint"
       ],
       "wants": [
         "Offers"
       ],
       "trade_rep": 13,
-      "created_ts": 1777834136
+      "created_ts": 1777834411
     }
   ],
   "hot_blueprints": []
