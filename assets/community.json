@@ -1,16 +1,29 @@
 {
-  "updated_at": "2026-05-03T18:40:05Z",
+  "updated_at": "2026-05-03T18:52:40Z",
   "invite_url": "https://discord.gg/raidertrader",
   "stats": {
-    "open_trades": 0,
+    "open_trades": 1,
     "requests": 0,
-    "active_traders": 0,
+    "active_traders": 1,
     "blueprint_requests": 0,
     "completed_trades": 39,
     "completed_trade_reps": 53,
     "member_count": 108,
     "total_messages": 1237
   },
-  "recent_trades": [],
+  "recent_trades": [
+    {
+      "intent": "offers",
+      "label": "Taking offers on",
+      "items": [
+        "Barricade Kit Blueprint"
+      ],
+      "wants": [
+        "Offers"
+      ],
+      "trade_rep": 13,
+      "created_ts": 1777834136
+    }
+  ],
   "hot_blueprints": []
 }
